@@ -9,5 +9,23 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "mongoose": "^8.16.4",
+    "nodemon": "^3.1.10",
+    "redis": "^5.7.0"
+  },
+  "devDependencies": {
+    "bcrypt": "^6.0.0",
+    "cross-env": "^10.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.1",
+    "slugify": "^1.6.6"
+  }
 }
