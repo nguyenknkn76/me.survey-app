@@ -18,7 +18,16 @@ app.use(express.urlencoded({
 }))
 
 // init databases
-// require('./dbs/init.mongodb');
+const connectDb = async () => {
+  const databaseInstance = require('./dbs/init.postgres');
+  await databaseInstance.authenticate();
+  await databaseInstance.getSequelizeInstance().sync({ 
+    force: false,
+    alter: true
+  });
+}
+
+connectDb();
 
 // init routers
 app.use('/',require('./routes/'))

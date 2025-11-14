@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data      
+    restart: always
+    healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+          interval: 10s # Kiểm tra mỗi 10 giây
+          timeout: 5s   # Timeout sau 5 giây
+          retries: 5    # Thử lại 5 lần trước khi báo lỗi
+          start_period: 20s # Cho phép 20s để khởi động lần đầu
